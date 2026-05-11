@@ -6,6 +6,13 @@
       "tecnologias": ["HTML", "CSS", "JavaScript"],
       "categoria": "Web",
       "enlace": "https://github.com/josevicente-del/romanico"
+    },
+    {
+      "nombre": "Presentación Curso IA",
+      "descripcion": "Portfolio personal y presentación interactiva desarrollada con Antigravity.",
+      "tecnologias": ["HTML", "CSS", "JavaScript"],
+      "categoria": "Portfolio",
+      "enlace": "https://github.com/josevicente-del/presentacioncurso"
     }
   ],
   "webs": [
