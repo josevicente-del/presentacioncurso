@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jose Vicente Catala — Alumno IA Práctica</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container" style="max-width:1100px; padding: 0 24px; position: relative; z-index: 1;">
+
+  <!-- ══════ HERO ══════ -->
+  <section class="hero animate">
+    <div class="hero-badge">
+      <i class="bi bi-mortarboard-fill"></i>
+      Alumno · Antigravity
+    </div>
+
+    <h1 class="hero-name">
+      Jose Vicente<br><span>Catala</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Repositorio de ejercicios del curso <strong style="color:var(--text)">IA Práctica para crear soluciones de negocio</strong> con Antigravity.
+    </p>
+
+    <div class="hero-meta">
+      <a href="https://github.com/josevicente-del" target="_blank" class="meta-chip">
+        <i class="bi bi-github"></i> josevicente-del
+      </a>
+      <a href="https://romanicoencanatabria.netlify.app/" target="_blank" class="meta-chip">
+        <i class="bi bi-globe2"></i> romanicoencanatabria.netlify.app
+      </a>
+      <span class="meta-chip">
+        <i class="bi bi-robot" style="color:var(--accent)"></i> IA Práctica · Negocios
+      </span>
+    </div>
+  </section>
+
+  <!-- ══════ STATS ══════ -->
+  <div class="row g-3 animate delay-1" id="stats-row">
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-repos">-</div>
+        <div class="stat-label">Repositorios</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-webs">-</div>
+        <div class="stat-label">Webs desplegadas</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-techs">-</div>
+        <div class="stat-label">Tecnologías</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-cats">-</div>
+        <div class="stat-label">Categorías</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════ PROYECTOS GITHUB ══════ -->
+  <section class="animate delay-2">
+    <div class="section-label">01 — Proyectos</div>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+      <h2 class="section-title mb-0">Repositorios GitHub</h2>
+      <span class="result-count">Mostrando <span id="count-repos">—</span> resultados</span>
+    </div>
+
+    <div class="filter-bar">
+      <label><i class="bi bi-funnel me-1"></i>Filtrar</label>
+      <input type="text" id="filter-repos-text" class="filter-input form-control flex-grow-1"
+             placeholder="Buscar por nombre, descripción o tecnología…" oninput="filterTable('repos')"/>
+      <select id="filter-repos-cat" class="filter-select form-select" style="max-width:180px"
+              onchange="filterTable('repos')">
+        <option value="">Todas las categorías</option>
+      </select>
+      <button class="btn-reset" onclick="resetFilter('repos')">
+        <i class="bi bi-x-circle me-1"></i>Limpiar
+      </button>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="table table-borderless" id="table-repos">
+        <thead>
+          <tr>
+            <th>Proyecto</th>
+            <th>Descripción</th>
+            <th>Tecnologías</th>
+            <th>Categoría</th>
+            <th>Enlace</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-repos"></tbody>
+      </table>
+      <div class="empty-state" id="empty-repos" style="display:none">
+        <i class="bi bi-search"></i>Sin resultados para esa búsqueda.
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══════ WEBS DESPLEGADAS ══════ -->
+  <section class="animate delay-3">
+    <div class="section-label">02 — Deployments</div>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+      <h2 class="section-title mb-0">Webs Desplegadas</h2>
+      <span class="result-count">Mostrando <span id="count-webs">—</span> resultados</span>
+    </div>
+
+    <div class="filter-bar">
+      <label><i class="bi bi-funnel me-1"></i>Filtrar</label>
+      <input type="text" id="filter-webs-text" class="filter-input form-control flex-grow-1"
+             placeholder="Buscar por título, URL o estado…" oninput="filterTable('webs')"/>
+      <select id="filter-webs-estado" class="filter-select form-select" style="max-width:160px"
+              onchange="filterTable('webs')">
+        <option value="">Todos los estados</option>
+        <option value="activo">Activo</option>
+        <option value="en desarrollo">En desarrollo</option>
+      </select>
+      <button class="btn-reset" onclick="resetFilter('webs')">
+        <i class="bi bi-x-circle me-1"></i>Limpiar
+      </button>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="table table-borderless" id="table-webs">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>URL</th>
+            <th>Repositorio</th>
+            <th>Tecnologías</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-webs"></tbody>
+      </table>
+      <div class="empty-state" id="empty-webs" style="display:none">
+        <i class="bi bi-search"></i>Sin resultados para esa búsqueda.
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══════ HABILIDADES / CURSO ══════ -->
+  <section class="animate delay-4">
+    <div class="section-label">03 — Formación</div>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+      <h2 class="section-title mb-0">Habilidades del Curso</h2>
+      <span class="result-count">Mostrando <span id="count-skills">—</span> resultados</span>
+    </div>
+
+    <div class="filter-bar">
+      <label><i class="bi bi-funnel me-1"></i>Filtrar</label>
+      <input type="text" id="filter-skills-text" class="filter-input form-control flex-grow-1"
+             placeholder="Buscar por habilidad o módulo…" oninput="filterTable('skills')"/>
+      <select id="filter-skills-nivel" class="filter-select form-select" style="max-width:180px"
+              onchange="filterTable('skills')">
+        <option value="">Todos los niveles</option>
+        <option value="básico">Básico</option>
+        <option value="intermedio">Intermedio</option>
+        <option value="avanzado">Avanzado</option>
+      </select>
+      <button class="btn-reset" onclick="resetFilter('skills')">
+        <i class="bi bi-x-circle me-1"></i>Limpiar
+      </button>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="table table-borderless" id="table-skills">
+        <thead>
+          <tr>
+            <th>Habilidad</th>
+            <th>Módulo</th>
+            <th>Herramienta</th>
+            <th>Nivel</th>
+            <th>Aplicación</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-skills"></tbody>
+      </table>
+      <div class="empty-state" id="empty-skills" style="display:none">
+        <i class="bi bi-search"></i>Sin resultados para esa búsqueda.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer>
+    <p>
+      © 2026 <a href="https://github.com/josevicente-del">Jose Vicente Catala</a> ·
+      Curso IA Práctica · <a href="https://antigravity.es" target="_blank">Antigravity</a>
+    </p>
+  </footer>
+
+</div><!-- /container -->
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Datos (sin CORS para local) -->
+<script src="data.js"></script>
+<!-- Custom JS -->
+<script src="main.js"></script>
+
+</body>
+</html>

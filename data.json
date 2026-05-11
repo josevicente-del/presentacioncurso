@@ -1,0 +1,120 @@
+{
+  "repos": [
+    {
+      "nombre": "Romanico",
+      "descripcion": "Proyecto sobre arte y arquitectura románica. Catálogo visual e interactivo del patrimonio románico.",
+      "tecnologias": ["HTML", "CSS", "JavaScript"],
+      "categoria": "Web",
+      "enlace": "https://github.com/josevicente-del/romanico"
+    }
+  ],
+  "webs": [
+    {
+      "titulo": "Romanico",
+      "url": "https://romanicoencanatabria.netlify.app/",
+      "repositorio": "https://github.com/josevicente-del/romanico",
+      "tecnologias": ["HTML", "CSS", "JavaScript"],
+      "estado": "Activo"
+    }
+  ],
+  "skills": [
+    {
+      "habilidad": "Diseño UI/UX y Prototipado",
+      "modulo": "Diseño Visual",
+      "herramienta": "Figma",
+      "nivel": "Intermedio",
+      "aplicacion": "Creación de interfaces gráficas"
+    },
+    {
+      "habilidad": "Desarrollo de Soluciones IA",
+      "modulo": "IA Práctica",
+      "herramienta": "Antigravity",
+      "nivel": "Avanzado",
+      "aplicacion": "Creación de aplicaciones completas"
+    },
+    {
+      "habilidad": "Creación de Skills",
+      "modulo": "IA Práctica",
+      "herramienta": "Antigravity",
+      "nivel": "Avanzado",
+      "aplicacion": "Definición de capacidades específicas"
+    },
+    {
+      "habilidad": "Diseño de Workflows",
+      "modulo": "IA Práctica",
+      "herramienta": "Antigravity",
+      "nivel": "Avanzado",
+      "aplicacion": "Orquestación de flujos de trabajo"
+    },
+    {
+      "habilidad": "Diseño de Agentes",
+      "modulo": "IA Práctica",
+      "herramienta": "Antigravity",
+      "nivel": "Avanzado",
+      "aplicacion": "Estructuración de comportamiento autónomo"
+    },
+    {
+      "habilidad": "Documentación en Formato MD",
+      "modulo": "IA Práctica",
+      "herramienta": "Antigravity",
+      "nivel": "Intermedio",
+      "aplicacion": "Estructuración de prompts y respuestas"
+    },
+    {
+      "habilidad": "Ingeniería de Prompts y Asistencia",
+      "modulo": "Fundamentos IA",
+      "herramienta": "ChatGPT",
+      "nivel": "Avanzado",
+      "aplicacion": "Generación de código y análisis"
+    },
+    {
+      "habilidad": "Prototipado Web",
+      "modulo": "Desarrollo Frontend",
+      "herramienta": "CodePen",
+      "nivel": "Intermedio",
+      "aplicacion": "Pruebas rápidas de HTML/CSS/JS"
+    },
+    {
+      "habilidad": "Generación de Interfaces UI",
+      "modulo": "Desarrollo Visual",
+      "herramienta": "Stitch",
+      "nivel": "Intermedio",
+      "aplicacion": "Generación de vistas y componentes"
+    },
+    {
+      "habilidad": "Protocolo de Contexto (MCP)",
+      "modulo": "Integración",
+      "herramienta": "MCP Servers",
+      "nivel": "Intermedio",
+      "aplicacion": "Conexión de IA con orígenes de datos"
+    },
+    {
+      "habilidad": "Creación y Uso de Prompts",
+      "modulo": "Ingeniería de Prompts",
+      "herramienta": "Claude",
+      "nivel": "Avanzado",
+      "aplicacion": "Redacción y optimización de prompts"
+    },
+    {
+      "habilidad": "Backend y Bases de Datos",
+      "modulo": "BaaS",
+      "herramienta": "Supabase",
+      "nivel": "Intermedio",
+      "aplicacion": "Autenticación, BBDD y APIs"
+    },
+    {
+      "habilidad": "Modelado Visual de BBDD",
+      "modulo": "Diseño de Datos",
+      "herramienta": "dbdraw",
+      "nivel": "Intermedio",
+      "aplicacion": "Diseño de esquemas relacionales"
+    },
+    {
+      "habilidad": "Desarrollo Rápido Asistido",
+      "modulo": "Desarrollo Frontend",
+      "herramienta": "Lovable",
+      "nivel": "Intermedio",
+      "aplicacion": "Generación rápida de código y prototipos"
+    }
+  ]
+}
