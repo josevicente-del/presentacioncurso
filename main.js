@@ -169,15 +169,43 @@ function updateCount(id) {
 /* ══════════════════════════════════════════
    INIT & FETCH DATA
 ══════════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Cargamos los datos directamente de la variable global de data.js
+    // 1. Cargamos los datos locales base
     DATA = JSON_DATA;
     
+    // 2. Fetch de GitHub de forma dinámica
+    try {
+      // Obtenemos los repositorios de tu usuario ordenados por los actualizados más recientemente
+      const githubRes = await fetch('https://api.github.com/users/josevicente-del/repos?sort=updated');
+      if (githubRes.ok) {
+        const githubData = await githubRes.json();
+        
+        // Evitamos duplicar los que ya están puestos manualmente en data.js con información enriquecida
+        const localReposUrls = DATA.repos.map(r => r.enlace.toLowerCase());
+        
+        const dynamicRepos = githubData
+          .filter(repo => !localReposUrls.includes(repo.html_url.toLowerCase()))
+          .map(repo => ({
+            nombre: repo.name,
+            descripcion: repo.description || "Sin descripción detallada en GitHub.",
+            tecnologias: repo.language ? [repo.language] : ["Varias"],
+            categoria: "Repositorio",
+            enlace: repo.html_url
+          }));
+        
+        // Unimos los locales enriquecidos con los nuevos dinámicos obtenidos en tiempo real
+        DATA.repos = [...DATA.repos, ...dynamicRepos];
+      }
+    } catch (gitErr) {
+      console.warn("No se pudieron cargar los repositorios de GitHub de forma dinámica. Usando solo datos locales.", gitErr);
+    }
+    
+    // 3. Renderizamos las tablas
     renderRepos();
     renderWebs();
     renderSkills();
   } catch (error) {
-    console.error('Error cargando los datos:', error);
+    console.error('Error inicializando los datos:', error);
   }
 });
