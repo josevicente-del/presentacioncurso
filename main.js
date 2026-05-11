@@ -181,21 +181,40 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (githubRes.ok) {
         const githubData = await githubRes.json();
         
-        // Evitamos duplicar los que ya están puestos manualmente en data.js con información enriquecida
+        // Evitamos duplicar los que ya están puestos manualmente
         const localReposUrls = DATA.repos.map(r => r.enlace.toLowerCase());
+        const localWebUrls = DATA.webs.map(w => w.url.toLowerCase());
         
-        const dynamicRepos = githubData
-          .filter(repo => !localReposUrls.includes(repo.html_url.toLowerCase()))
-          .map(repo => ({
-            nombre: repo.name,
-            descripcion: repo.description || "Sin descripción detallada en GitHub.",
-            tecnologias: repo.language ? [repo.language] : ["Varias"],
-            categoria: "Repositorio",
-            enlace: repo.html_url
-          }));
+        const dynamicRepos = [];
+        const dynamicWebs = [];
         
-        // Unimos los locales enriquecidos con los nuevos dinámicos obtenidos en tiempo real
+        githubData.forEach(repo => {
+          // 1. Integrar nuevos repositorios
+          if (!localReposUrls.includes(repo.html_url.toLowerCase())) {
+            dynamicRepos.push({
+              nombre: repo.name,
+              descripcion: repo.description || "Sin descripción detallada en GitHub.",
+              tecnologias: repo.language ? [repo.language] : ["Varias"],
+              categoria: "Repositorio",
+              enlace: repo.html_url
+            });
+          }
+          
+          // 2. Integrar webs desplegadas (si el repo tiene un "homepage" configurado)
+          if (repo.homepage && repo.homepage.startsWith('http') && !localWebUrls.includes(repo.homepage.toLowerCase())) {
+            dynamicWebs.push({
+              titulo: repo.name,
+              url: repo.homepage,
+              repositorio: repo.html_url,
+              tecnologias: repo.language ? [repo.language] : ["Varias"],
+              estado: "Activo"
+            });
+          }
+        });
+        
+        // Unimos los locales con los nuevos dinámicos
         DATA.repos = [...DATA.repos, ...dynamicRepos];
+        DATA.webs = [...DATA.webs, ...dynamicWebs];
       }
     } catch (gitErr) {
       console.warn("No se pudieron cargar los repositorios de GitHub de forma dinámica. Usando solo datos locales.", gitErr);
